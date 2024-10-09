@@ -1,23 +1,21 @@
+'use client'
+import { useEffect } from 'react'
 import CourseCard from '@/src/components/CourseCard'
+import { mockLessons } from '@/src/mock/mock'
 
 export default function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <h2>Today&#39;s courses</h2>
+  useEffect(() => {
+    console.log(mockLessons)
+  }, [])
 
-      <div className="max-w-full flex flew-row flex-wrap px-24 gap-5">
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
+  return (
+    <div className="flex flex-col items-center justify-center py-10">
+      <h2 className="text-3xl font-semibold mb-8">Today's Courses</h2>
+
+      <div className="max-w-6xl flex flex-row flex-wrap gap-8 justify-center">
+        {mockLessons.map(lesson => (
+          <CourseCard key={lesson.id} lesson={lesson} />
+        ))}
       </div>
     </div>
   )
